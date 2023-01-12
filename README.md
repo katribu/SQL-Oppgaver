@@ -1,2 +1,2 @@
 # SQL-Oppgaver
-SQL oppgaver
+Practicing with version control by working with the sql questions. From JS course with AW.
