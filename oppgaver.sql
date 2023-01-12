@@ -16,7 +16,7 @@ SELECT Name, SurfaceArea /(SELECT MAX(surfacearea) FROM country) * 100
 FROM countrycode ORDER BY surfacearea DESC;
 
 -- ========== SUBQUERIES OPPGAVER =========== --
---a)
+--a) list all the countries that don't have any cities
 -- JOIN EX --
 SELECT country.name
 FROM country
@@ -29,3 +29,13 @@ FROM country where code NOT IN (
 	SELECT DISTINCT countrycode
 	from city
 );
+
+--b) get out all information from the city table for all the cities that have the same name.
+SELECT *
+FROM city
+WHERE name IN(
+	SELECT name
+	FROM city
+	GROUP BY name
+	HAVING COUNT(name)>1
+) ORDER BY name; 
