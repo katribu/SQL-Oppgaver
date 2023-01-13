@@ -46,3 +46,15 @@ SELECT Name, surfacearea, population,
 ROUND(population /(SELECT SUM(population) FROM country)*100,5)
 --population /(SELECT SUM(population) FROM country) * 100 as worldpoppercentage
 FROM country ORDER BY name;
+
+--d)
+--USING CASE and re-categorizing the governmenttypes into three classes: monarchy, republic or other.
+SELECT name,
+       governmentform,
+       CASE
+           WHEN governmentform LIKE '%Mon%' THEN 'Monarchy'
+           WHEN governmentform LIKE '%Republic%' THEN 'Republic'
+           WHEN governmentform LIKE '%_%' THEN 'Other'
+       END duration
+FROM country
+ORDER BY name;
