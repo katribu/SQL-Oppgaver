@@ -41,7 +41,8 @@ WHERE name IN(
 ) ORDER BY name; 
 
 --c)
+-- Need to make the ROUND,CAST work for decimal places to show up....
 SELECT Name, surfacearea, population,
-ROUND(CAST(population /(SELECT SUM(population) FROM country),2)*100)
+ROUND(population /(SELECT SUM(population) FROM country)*100,5)
 --population /(SELECT SUM(population) FROM country) * 100 as worldpoppercentage
 FROM country ORDER BY name;
