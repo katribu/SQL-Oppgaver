@@ -39,3 +39,9 @@ WHERE name IN(
 	GROUP BY name
 	HAVING COUNT(name)>1
 ) ORDER BY name; 
+
+--c)
+SELECT Name, surfacearea, population,
+ROUND(CAST(population /(SELECT SUM(population) FROM country),2)*100)
+--population /(SELECT SUM(population) FROM country) * 100 as worldpoppercentage
+FROM country ORDER BY name;
